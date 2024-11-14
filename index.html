@@ -4,6 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creatures</title>
+
+    <!-- JavaScript to set random favicon -->
+    <script>
+        // Array of favicon paths
+        const favicons = [
+            'Leaffavicon.png',
+            'Handfavicon.png',
+            'Treefavicon.png',
+            'Pawfavicon.png',
+        ];
+
+        // Function to set a random favicon
+        function setRandomFavicon() {
+            // Select a random favicon from the array
+            const randomFavicon = favicons[Math.floor(Math.random() * favicons.length)];
+            
+            // Create a new link element for the favicon
+            const link = document.createElement('link');
+            link.rel = 'icon';
+            link.href = randomFavicon;
+            
+            // Remove any existing favicon link elements
+            const existingFavicon = document.querySelector("link[rel='icon']");
+            if (existingFavicon) {
+                document.head.removeChild(existingFavicon);
+            }
+
+            // Add the new favicon to the document head
+            document.head.appendChild(link);
+        }
+
+        // Call the function on page load
+        window.addEventListener('DOMContentLoaded', setRandomFavicon);
+    </script>
+
     <style>
         /* Basic reset */
         * {
@@ -127,7 +162,7 @@
 
     <!-- Main content with card grid -->
     <div class="card-container">
-        <!-- Card example with flip effect -->
+        <!-- Example cards, repeat as needed -->
         <div class="card-box">
             <div class="card-inner">
                 <div class="card-face card-front">
@@ -138,199 +173,25 @@
                 </div>
             </div>
         </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <!-- Duplicate .card-box for more cards as needed -->
     </div>
 
     <script>
         // List of translations for the header title
         const translations = [
-            "Créature",             // French
-            "Stvorenie",            // Slovak
-            "Criatura",             // Spanish
-            "Πλάσμα",               // Greek
-            "Creatură",             // Romanian
-            "Kreatur",              // German
-            "Stvoření",             // Czech
-            "Creutair",             // Scots Gaelic
-            "Olento",               // Finnish
-            "Creatura",             // Italian
-            "Stvorenje",            // Croatian
-            "Criatura"              // Portuguese
+            "Créature", "Stvorenie", "Criatura", "Πλάσμα", "Creatură", 
+            "Kreatur", "Stvoření", "Creutair", "Olento", "Creatura", 
+            "Stvorenje", "Criatura"
         ];
-    
+
         const headerTitle = document.getElementById("header-title");
         let currentTranslationIndex = 0;
-    
+
         headerTitle.addEventListener("mouseover", () => {
-            // Set the text content to the next translation in the list
             headerTitle.textContent = translations[currentTranslationIndex];
-            
-            // Move to the next translation, or loop back to the beginning if at the end
             currentTranslationIndex = (currentTranslationIndex + 1) % translations.length;
         });
-    
+
         headerTitle.addEventListener("mouseout", () => {
-            // Reset to the original title
             headerTitle.textContent = "Creatures";
         });
     </script>
