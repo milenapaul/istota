@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creatures</title>
-
-    <!-- JavaScript to set random favicon -->
     <script>
         // Array of favicon paths
         const favicons = [
@@ -17,39 +15,31 @@
 
         // Function to set a random favicon
         function setRandomFavicon() {
-            // Select a random favicon from the array
             const randomFavicon = favicons[Math.floor(Math.random() * favicons.length)];
-            
-            // Create a new link element for the favicon
             const link = document.createElement('link');
             link.rel = 'icon';
             link.href = randomFavicon;
-            
-            // Remove any existing favicon link elements
+
             const existingFavicon = document.querySelector("link[rel='icon']");
             if (existingFavicon) {
                 document.head.removeChild(existingFavicon);
             }
 
-            // Add the new favicon to the document head
             document.head.appendChild(link);
         }
 
-        // Call the function on page load
         window.addEventListener('DOMContentLoaded', setRandomFavicon);
     </script>
 
     <style>
-        /* Basic reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Body styling with background image that scrolls */
         body {
-            background-image: url('Shalbackground.jpg'); /* Replace with your image path */
+            background-image: url('Shalbackground.jpg');
             background-size: cover;
             background-position: center;
             font-family: Helvetica, Arial, sans-serif;
@@ -59,14 +49,12 @@
             align-items: center;
         }
 
-        /* Text style for yellow with black outline */
         .text-style {
-            font-weight: 500; /* Medium weight */
-            color: yellow; /* Light yellow color */
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
+            font-weight: 500;
+            color: yellow;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
 
-        /* Header with hover effect */
         .header {
             font-size: 2em;
             font-weight: bold;
@@ -79,11 +67,10 @@
             cursor: pointer;
         }
 
-        /* Fake navigation bar styling */
         .navbar {
             width: 100%;
             max-width: 1200px;
-            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 10px;
             text-align: center;
         }
@@ -91,26 +78,24 @@
         .navbar a {
             font-weight: 500;
             color: yellow;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
             text-decoration: none;
             padding: 0 15px;
             font-size: 1.2em;
         }
 
-        /* Grid layout for cards */
         .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust card width */
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 20px;
             padding: 20px;
             max-width: 1200px;
             width: 100%;
         }
 
-        /* Card flip animation with drop shadow */
         .card-box {
             perspective: 1000px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Drop shadow */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
         }
 
@@ -124,11 +109,10 @@
             border-radius: 10px;
         }
 
-        .card-box:hover .card-inner {
+        .card-inner.flipped {
             transform: rotateY(180deg);
         }
 
-        /* Front and back of card */
         .card-face {
             position: absolute;
             width: 100%;
@@ -150,21 +134,9 @@
     </style>
 </head>
 <body>
-
-    <!-- Header with hover effect -->
     <div class="header text-style" id="header-title">Creatures</div>
 
-    <!-- Fake Navigation Bar
-        <div class="navbar">
-        <a href="#" class="text-style">Home</a>
-        <a href="#" class="text-style">About</a>
-    </div> 
-    -->
-
-
-    <!-- Main content with card grid -->
     <div class="card-container">
-        <!-- Example cards, repeat as needed -->
         <div class="card-box">
             <div class="card-inner">
                 <div class="card-face card-front">
@@ -255,68 +227,16 @@
                 </div>
             </div>
         </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-box">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="card-face card-back">
-                    <p style="padding: 20px;">Card Details</p>
-                </div>
-            </div>
-        </div>
+        <!-- Add more cards as needed -->
     </div>
 
     <script>
-        // List of translations for the header title
-        const translations = [
-            "Créature", "Stvorenie", "Criatura", "Πλάσμα", "Creatură", 
-            "Kreatur", "Stvoření", "Creutair", "Olento", "Creatura", 
-            "Stvorenje", "Criatura"
-        ];
-
-        const headerTitle = document.getElementById("header-title");
-        let currentTranslationIndex = 0;
-
-        headerTitle.addEventListener("mouseover", () => {
-            headerTitle.textContent = translations[currentTranslationIndex];
-            currentTranslationIndex = (currentTranslationIndex + 1) % translations.length;
-        });
-
-        headerTitle.addEventListener("mouseout", () => {
-            headerTitle.textContent = "Creatures";
+        const cardInners = document.querySelectorAll('.card-inner');
+        cardInners.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
         });
     </script>
-
 </body>
 </html>
