@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Selling Website</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling with static background image */
+        body {
+            background-image: url('Shalbackground.jpg'); /* Replace with your image path */
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            font-family: Helvetica, Arial, sans-serif;
+            color: yellow;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Text style for yellow with black outline */
+        .text-style {
+            font-weight: 500; /* Medium weight */
+            color: yellow; /* Light yellow color */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
+        }
+
+        /* Fake navigation bar styling */
+        .navbar {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar a {
+            font-weight: 500;
+            color: yellow;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 1.2em;
+        }
+
+        /* Grid layout for cards */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust card width */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .card-box {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 250px;
+            background-color: #fcf9f3; /* Placeholder background */
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        /* Hover effect for GIFs */
+        .card-box img.static-frame {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .card-box img.hover-gif {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .card-box:hover img.static-frame {
+            display: none;
+        }
+
+        .card-box:hover img.hover-gif {
+            display: block;
+        }
+
+        /* Adding a bit of scale effect on hover */
+        .card-box:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fake Navigation Bar -->
+    <div class="navbar">
+        <a href="#" class="text-style">Home</a>
+        <a href="#" class="text-style">Shop</a>
+        <a href="#" class="text-style">About</a>
+    </div>
+
+    <!-- Main content with card grid -->
+    <div class="card-container">
+        <!-- Card example -->
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <div class="card-box">
+            <img src="card-static.jpg" alt="Card Front" class="static-frame">
+            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+        </div>
+        <!-- Add more .card-box divs for more cards -->
+    </div>
+
+</body>
+</html>
