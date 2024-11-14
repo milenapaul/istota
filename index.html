@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Selling Website</title>
+    <title>Creatures</title>
     <style>
         /* Basic reset */
         * {
@@ -12,10 +12,9 @@
             box-sizing: border-box;
         }
 
-        /* Body styling with static background image */
+        /* Body styling with background image that scrolls */
         body {
             background-image: url('Shalbackground.jpg'); /* Replace with your image path */
-            background-attachment: fixed;
             background-size: cover;
             background-position: center;
             font-family: Helvetica, Arial, sans-serif;
@@ -32,9 +31,23 @@
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
         }
 
+        /* Header with hover effect */
+        .header {
+            font-size: 2em;
+            font-weight: bold;
+            padding: 20px;
+            text-align: left;
+            width: 100%;
+            max-width: 1200px;
+            color: yellow;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+            cursor: pointer;
+        }
+
         /* Fake navigation bar styling */
         .navbar {
             width: 100%;
+            max-width: 1200px;
             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
             padding: 10px;
             text-align: center;
@@ -59,101 +72,268 @@
             width: 100%;
         }
 
+        /* Card flip animation with drop shadow */
         .card-box {
+            perspective: 1000px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Drop shadow */
+            border-radius: 10px;
+        }
+
+        .card-inner {
             position: relative;
-            overflow: hidden;
             width: 100%;
             height: 250px;
-            background-color: #fcf9f3; /* Placeholder background */
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
             border-radius: 10px;
-            transition: transform 0.3s;
         }
 
-        /* Hover effect for GIFs */
-        .card-box img.static-frame {
-            display: block;
+        .card-box:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Front and back of card */
+        .card-face {
+            position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .card-box img.hover-gif {
-            display: none;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
+        .card-front {
+            background-color: #fcf9f3;
         }
 
-        .card-box:hover img.static-frame {
-            display: none;
-        }
-
-        .card-box:hover img.hover-gif {
-            display: block;
-        }
-
-        /* Adding a bit of scale effect on hover */
-        .card-box:hover {
-            transform: scale(1.05);
+        .card-back {
+            background-color: #222;
+            color: yellow;
+            transform: rotateY(180deg);
         }
     </style>
 </head>
 <body>
 
+    <!-- Header with hover effect -->
+    <div class="header text-style" id="header-title">Creatures</div>
+
     <!-- Fake Navigation Bar -->
     <div class="navbar">
         <a href="#" class="text-style">Home</a>
-        <a href="#" class="text-style">Shop</a>
         <a href="#" class="text-style">About</a>
     </div>
 
     <!-- Main content with card grid -->
     <div class="card-container">
-        <!-- Card example -->
+        <!-- Card example with flip effect -->
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
         <div class="card-box">
-            <img src="card-static.jpg" alt="Card Front" class="static-frame">
-            <img src="card-animation.gif" alt="Card GIF" class="hover-gif">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
         </div>
-        <!-- Add more .card-box divs for more cards -->
+        <div class="card-box">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <img src="card-static.jpg" alt="Card Front" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="card-face card-back">
+                    <p style="padding: 20px;">Card Details</p>
+                </div>
+            </div>
+        </div>
+        <!-- Duplicate .card-box for more cards as needed -->
     </div>
+
+    <script>
+        // List of translations for the header title
+        const translations = [
+            "Créature",             // French
+            "Stvorenie",            // Slovak
+            "Criatura",             // Spanish
+            "Πλάσμα",               // Greek
+            "Creatură",             // Romanian
+            "Kreatur",              // German
+            "Stvoření",             // Czech
+            "Creutair",             // Scots Gaelic
+            "Olento",               // Finnish
+            "Creatura",             // Italian
+            "Stvorenje",            // Croatian
+            "Criatura"              // Portuguese
+        ];
+    
+        const headerTitle = document.getElementById("header-title");
+        let currentTranslationIndex = 0;
+    
+        headerTitle.addEventListener("mouseover", () => {
+            // Set the text content to the next translation in the list
+            headerTitle.textContent = translations[currentTranslationIndex];
+            
+            // Move to the next translation, or loop back to the beginning if at the end
+            currentTranslationIndex = (currentTranslationIndex + 1) % translations.length;
+        });
+    
+        headerTitle.addEventListener("mouseout", () => {
+            // Reset to the original title
+            headerTitle.textContent = "Creatures";
+        });
+    </script>
 
 </body>
 </html>
