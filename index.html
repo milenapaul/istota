@@ -144,6 +144,7 @@
     align-items: center;
     z-index: 1000;
 }
+}
 
 .lightbox-content {
     position: relative;
@@ -465,6 +466,13 @@
         <!-- Repeat card-box as needed -->
     </div>
 
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="Card Image">
+            <span id="close-btn" class="close-btn">&times;</span>
+        </div>
+    </div>
+
     <script>
         // List of translations for the header title
         const translations = [
@@ -531,31 +539,22 @@ closeBtn.addEventListener('click', () => {
 
 // Flip the card image when clicked in the lightbox
 lightbox.addEventListener('click', (e) => {
-    // Only flip if the image itself is clicked, not the close button
     if (e.target === lightboxImage) {
+        // Flip between front and back images
         if (lightboxImage.src.includes(lightbox.dataset.frontImage)) {
             lightboxImage.src = lightbox.dataset.backImage;
         } else {
             lightboxImage.src = lightbox.dataset.frontImage;
         }
     }
-});
 
-// Close the lightbox if clicked outside the image
-lightbox.addEventListener('click', (e) => {
+    // Close the lightbox if the background is clicked
     if (e.target === lightbox) {
         lightbox.style.display = 'none';
     }
 });
 
     </script>
-
-<div id="lightbox" class="lightbox">
-    <div class="lightbox-content">
-        <img id="lightbox-image" src="" alt="Card Image">
-        <span id="close-btn" class="close-btn">&times;</span>
-    </div>
-</div>
 
 </body>
 </html>
