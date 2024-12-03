@@ -200,7 +200,7 @@
     top: 10px;
     right: 10px;
     color: white;
-    font-size: 2px;
+    font-size: 30px;
     cursor: pointer;
     z-index: 1010;
 }
@@ -535,57 +535,7 @@
             });
         });
 
-// Get lightbox elements
-const lightbox = document.getElementById('lightbox');
-const lightboxContainer = document.querySelector('.lightbox-content');
-const closeBtn = document.getElementById('close-btn');
 
-// Select all card-boxes
-const cards = document.querySelectorAll('.card-box');
-
-// Open lightbox when a card is double-clicked
-cards.forEach(card => {
-    card.addEventListener('dblclick', () => {
-        // Get the front and back images dynamically
-        const frontImage = card.querySelector('.card-front img').src;
-        const backImage = card.querySelector('.card-back img').src;
-
-        // Create the images container inside the lightbox content
-        const imagesContainer = document.createElement('div');
-        imagesContainer.classList.add('lightbox-images-container');
-
-        // Create the image elements for front and back images
-        const frontImg = document.createElement('img');
-        frontImg.src = frontImage;
-        const backImg = document.createElement('img');
-        backImg.src = backImage;
-
-        // Clear any previous content in the lightbox
-        lightboxContainer.innerHTML = ''; // Clear previous lightbox content
-
-        // Append the front and back images to the container
-        imagesContainer.appendChild(frontImg);
-        imagesContainer.appendChild(backImg);
-
-        // Add the images container to the lightbox content
-        lightboxContainer.appendChild(imagesContainer);
-
-        // Display the lightbox
-        lightbox.style.display = 'flex';
-    });
-});
-
-// Close lightbox when clicking on the close button
-closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-});
-
-// Close the lightbox if the background is clicked
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-        lightbox.style.display = 'none';
-    }
-});
 
     </script>
 
