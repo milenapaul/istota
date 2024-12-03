@@ -148,16 +148,19 @@
 .lightbox-content {
     position: relative;
     width: 80%;
+    max-width: 800px;
     height: 80%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
+    max-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .lightbox img {
     max-width: 100%;
     max-height: 100%;
-    margin: auto;
     display: block;
+    margin: auto;
 }
 
 .lightbox .close-btn {
@@ -167,6 +170,7 @@
     color: white;
     font-size: 30px;
     cursor: pointer;
+    z-index: 1010;
 }
 
 /* Optional: flip effect */
@@ -493,7 +497,7 @@
             });
         });
 
-        // Get lightbox elements
+// Get lightbox elements
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const closeBtn = document.getElementById('close-btn');
@@ -501,20 +505,22 @@ const closeBtn = document.getElementById('close-btn');
 // Select all card-boxes
 const cards = document.querySelectorAll('.card-box');
 
-// Open lightbox when a card is clicked
+// Open lightbox when a card is double-clicked
 cards.forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('dblclick', () => {
         // Get the front and back images dynamically
         const frontImage = card.querySelector('.card-front img').src;
         const backImage = card.querySelector('.card-back img').src;
 
         // Set the front image initially
         lightboxImage.src = frontImage;
-        lightbox.style.display = 'flex';
 
         // Store front and back image references on the lightbox
         lightbox.dataset.frontImage = frontImage;
         lightbox.dataset.backImage = backImage;
+
+        // Display the lightbox
+        lightbox.style.display = 'flex';
     });
 });
 
@@ -541,7 +547,15 @@ lightbox.addEventListener('click', (e) => {
         lightbox.style.display = 'none';
     }
 });
+
     </script>
+
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <img id="lightbox-image" src="" alt="Card Image">
+        <span id="close-btn" class="close-btn">&times;</span>
+    </div>
+</div>
 
 </body>
 </html>
