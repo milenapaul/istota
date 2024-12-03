@@ -118,6 +118,7 @@
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
+
             overflow: hidden;
         }
 
@@ -134,42 +135,48 @@
         .lightbox {
     display: none; /* Hidden by default */
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
-/* Lightbox content */
 .lightbox-content {
-    text-align: center;
     position: relative;
-    padding: 20px;
-    background-color: #333;
-    border-radius: 10px;
-    max-width: 80%;
-    max-height: 80%;
+    width: 80%;
+    height: 80%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
 }
 
-/* Close button */
-.lightbox-close {
+.lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display: block;
+}
+
+.lightbox .close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
+    color: white;
     font-size: 30px;
-    font-weight: bold;
-    color: yellow;
     cursor: pointer;
 }
 
-.lightbox-close:hover {
-    color: white;
+/* Optional: flip effect */
+.flip {
+    transform: rotateY(180deg);
 }
 
+.lightbox img {
+    backface-visibility: hidden;
+}
     </style>
 </head>
 <body>
@@ -486,47 +493,55 @@
             });
         });
 
-        // Get the lightbox elements
+        // Get lightbox elements
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
-const lightboxText = document.getElementById('lightbox-text');
-const closeButton = document.querySelector('.lightbox-close');
+const closeBtn = document.getElementById('close-btn');
 
-// Function to open the lightbox
-document.querySelectorAll('.card-box').forEach(card => {
+// Select all card-boxes
+const cards = document.querySelectorAll('.card-box');
+
+// Open lightbox when a card is clicked
+cards.forEach(card => {
     card.addEventListener('click', () => {
-        const backImage = card.querySelector('.card-face.card-back img').src;
-        const cardText = "Put your custom text here";  // You can modify this text dynamically as needed
+        // Get the front and back images dynamically
+        const frontImage = card.querySelector('.card-front img').src;
+        const backImage = card.querySelector('.card-back img').src;
 
-        lightboxImage.src = backImage; // Set the back image of the clicked card to lightbox image
-        lightboxText.textContent = cardText; // Set custom text for the lightbox
+        // Set the front image initially
+        lightboxImage.src = frontImage;
+        lightbox.style.display = 'flex';
 
-        lightbox.style.display = 'flex'; // Show the lightbox
+        // Store front and back image references on the lightbox
+        lightbox.dataset.frontImage = frontImage;
+        lightbox.dataset.backImage = backImage;
     });
 });
 
-// Function to close the lightbox
-closeButton.addEventListener('click', () => {
-    lightbox.style.display = 'none'; // Hide the lightbox
+// Close lightbox when clicking on the close button
+closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
 });
 
-// Close the lightbox when clicking outside the content area
-lightbox.addEventListener('click', (event) => {
-    if (event.target === lightbox) {
-        lightbox.style.display = 'none'; // Hide the lightbox
+// Flip the card image when clicked in the lightbox
+lightbox.addEventListener('click', (e) => {
+    // Only flip if the image itself is clicked, not the close button
+    if (e.target === lightboxImage) {
+        if (lightboxImage.src.includes(lightbox.dataset.frontImage)) {
+            lightboxImage.src = lightbox.dataset.backImage;
+        } else {
+            lightboxImage.src = lightbox.dataset.frontImage;
+        }
     }
 });
 
-
+// Close the lightbox if clicked outside the image
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+    }
+});
     </script>
-
-<div id="lightbox" class="lightbox">
-    <div class="lightbox-content">
-        <span class="lightbox-close">&times;</span>
-        <img id="lightbox-image" src="" alt="Lightbox Image" style="width: 100%; max-height: 80vh; object-fit: contain;">
-        <div id="lightbox-text" style="color: yellow; text-align: center; margin-top: 10px;"></div>
-    </div>
-</div>
 
 </body>
 </html>
