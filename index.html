@@ -97,45 +97,70 @@ body {
     transform: rotateY(180deg);
 }
 
-/* New lightbox styling */
+/* Disable text selection */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none; /* Disable text selection */
+}
+
+/* Lightbox content - ensure no rounding and image fits correctly */
 .lightbox {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
     display: none; /* Hidden by default */
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
+/* Lightbox content - ensure no rounding and image fits correctly */
 .lightbox-content {
     position: relative;
+    width: 90%; /* Adjust width */
+    max-width: 1000px;
+    height: auto;
+    max-height: 80%; /* Limit max height */
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 90%; /* Make sure it doesn't take up the whole screen */
-    max-height: 80%;
-    overflow: hidden;
-    margin: 10px;
-    background-color: #222;
-    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 0; /* No border radius */
+    background-color: #fff; /* Background color for lightbox content */
 }
 
+.lightbox img {
+    max-width: 100%; /* Ensure the image scales */
+    max-height: 100%; /* Ensure the image scales without stretching */
+    object-fit: contain; /* Make sure the whole image is visible without being cropped */
+    display: block;
+    margin: auto;
+    border-radius: 0; /* No border radius */
+}
+
+/* Container to hold both front and back images side by side */
 .lightbox-images-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
-}
-
-.lightbox-images-container img {
-    width: 48%; /* Allow the images to be side-by-side */
     height: auto;
-    object-fit: contain;
 }
 
+/* Style each image */
+.lightbox-images-container img {
+    width: 48%; /* Keep both images smaller but nearly equal size */
+    height: auto;
+    object-fit: contain; /* Ensure the images maintain their aspect ratio */
+    margin-right: 2%;
+}
+
+/* Close button */
 .close-btn {
     position: absolute;
     top: 10px;
@@ -145,7 +170,6 @@ body {
     cursor: pointer;
     z-index: 1010;
 }
-
 /* Optional: flip effect */
 .flip {
     transform: rotateY(180deg);
