@@ -132,42 +132,48 @@
             transform: rotateY(180deg);
         }
 
-        .lightbox {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-}
-
-.lightbox-content {
+        .lightbox-content {
     position: relative;
-    width: 80%;
-    max-width: 800px;
-    height: 80%;
-    max-height: 600px;
+    width: 90%; /* Adjust width to allow some space around the images */
+    max-width: 1000px; /* Set a max-width */
+    height: auto;
+    max-height: 80%; /* Limit the max-height to leave room for margins */
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px; /* Give some margin from top */
+    margin-bottom: 20px; /* Give some margin from bottom */
 }
 
 .lightbox img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 100%; /* Ensure images scale */
+    max-height: 100%; /* Ensure images don't stretch */
     display: block;
     margin: auto;
+    border-radius: 5px;
 }
 
-.lightbox .close-btn {
+/* Container to hold both front and back images side by side */
+.lightbox-images-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+/* Style each image to keep them proportionally correct and with space in between */
+.lightbox-images-container img {
+    width: 48%; /* Keep both images smaller but nearly equal size */
+    height: auto;
+    object-fit: contain;
+    margin-right: 2%;
+}
+
+/* Close button style */
+.close-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     color: white;
     font-size: 30px;
     cursor: pointer;
@@ -507,7 +513,7 @@
 
 // Get lightbox elements
 const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightbox-image');
+const lightboxContainer = document.querySelector('.lightbox-content');
 const closeBtn = document.getElementById('close-btn');
 
 // Select all card-boxes
@@ -520,12 +526,25 @@ cards.forEach(card => {
         const frontImage = card.querySelector('.card-front img').src;
         const backImage = card.querySelector('.card-back img').src;
 
-        // Set the front image initially
-        lightboxImage.src = frontImage;
+        // Create the images container inside the lightbox content
+        const imagesContainer = document.createElement('div');
+        imagesContainer.classList.add('lightbox-images-container');
 
-        // Store front and back image references on the lightbox
-        lightbox.dataset.frontImage = frontImage;
-        lightbox.dataset.backImage = backImage;
+        // Create the image elements for front and back images
+        const frontImg = document.createElement('img');
+        frontImg.src = frontImage;
+        const backImg = document.createElement('img');
+        backImg.src = backImage;
+
+        // Clear any previous content in the lightbox
+        lightboxContainer.innerHTML = ''; // Clear previous lightbox content
+
+        // Append the front and back images to the container
+        imagesContainer.appendChild(frontImg);
+        imagesContainer.appendChild(backImg);
+
+        // Add the images container to the lightbox content
+        lightboxContainer.appendChild(imagesContainer);
 
         // Display the lightbox
         lightbox.style.display = 'flex';
@@ -537,18 +556,8 @@ closeBtn.addEventListener('click', () => {
     lightbox.style.display = 'none';
 });
 
-// Flip the card image when clicked in the lightbox
+// Close the lightbox if the background is clicked
 lightbox.addEventListener('click', (e) => {
-    if (e.target === lightboxImage) {
-        // Flip between front and back images
-        if (lightboxImage.src.includes(lightbox.dataset.frontImage)) {
-            lightboxImage.src = lightbox.dataset.backImage;
-        } else {
-            lightboxImage.src = lightbox.dataset.frontImage;
-        }
-    }
-
-    // Close the lightbox if the background is clicked
     if (e.target === lightbox) {
         lightbox.style.display = 'none';
     }
